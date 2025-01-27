@@ -10,8 +10,7 @@ interface CarCardProps {
 
 export default function CarCard({ car }: CarCardProps) {
     return (
-        <Card className=" bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300
-">
+        <Card className=" bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
             <CardHeader className="p-4">
                 <div className="flex items-start justify-between">
                     <div>
@@ -30,7 +29,7 @@ export default function CarCard({ car }: CarCardProps) {
                         alt={car.name}
                         className="object-cover"
                         width={400}
-                        height={200}                    />
+                        height={200} />
                 </div>
                 <div className="mt-3 grid grid-cols-3 gap-12 text-sm">
                     <div className="flex items-center gap-1 text-muted-foreground">

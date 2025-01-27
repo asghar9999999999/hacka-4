@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select"
 import { ArrowRightLeft } from 'lucide-react'
 
-export default function SearchForm() {
+export default function LocationPicker() {
     return (
         <div className="container px-4">
             <div className="relative flex flex-col gap-4 md:flex-row md:items-end">

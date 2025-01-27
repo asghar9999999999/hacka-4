@@ -33,11 +33,11 @@ export default function Hero() {
                     </Button>
                 </div>
                 <Image
-                    src="/car-1.png?height=2000&width=2000"
+                    src="/c1.png?height=2000&width=2000"
                     alt="Sports car"
                     width={2000}
                     height={2000}
-                    className="absolute bottom-5 right-12 max-w-[250px] md:max-w-[350px]"
+                    className="absolute bottom-0 top-30 right-10 max-w-[380px] md:max-w-[380px]"
                 />
             </div>
         </div>

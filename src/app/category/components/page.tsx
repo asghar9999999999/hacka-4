@@ -1,16 +1,15 @@
-import type { Car } from "../../types/car"
-import Header from "./homepage/components/header"
-import Hero from "./homepage/components/hero"
-import SearchForm from "./homepage/components/search-form"
-import CarCard from "./homepage/components/car-card"
-import Footer from "./homepage/components/footer"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import CarDisplay from "./display/car"
+"use client";
 
-const popularCars: Car[] = [
+import { Header } from "./Header";
+import LocationPicker from "./LocationPicker";
+import { Sidebar } from "./Sidebar";
+import CarCard from "./CarCard";
+import Footer from "./footer";
+import CarDisplay from "./car";
+const cars = [
     {
-        _id: "1",
+        _id : "1",
+
         name: "Koenigsegg",
         brand: "Koenigsegg",
         description: "High-performance sports car with cutting-edge technology.",
@@ -23,11 +22,10 @@ const popularCars: Car[] = [
         tags: ["Luxury", "High Performance"],
         image: "/c6.png?height=200&width=400",
         liked: true,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "koenigsegg",
     },
-    {
-        _id: "2",
+    { 
+        _id : "2",
         name: "Nissan GT-R",
         brand: "Nissan",
         description: "Iconic Japanese sports car known for its performance and handling.",
@@ -38,13 +36,11 @@ const popularCars: Car[] = [
         pricePerDay: "80.00",
         originalPrice: "100.00",
         tags: ["Fast", "Iconic"],
-        image: "/c3.png?height=200&width=400",
         liked: false,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "nissan-gt-r",
     },
-    {
-        _id: "3",
+    { 
+        _id : "3",
         name: "Rolls-Royce Phantom",
         brand: "Rolls-Royce",
         description: "Ultimate luxury sedan with unparalleled comfort and prestige.",
@@ -57,11 +53,10 @@ const popularCars: Car[] = [
         tags: ["Luxury", "Comfort"],
         image: "/c4.png?height=200&width=400",
         liked: true,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "rolls-royce-phantom",
     },
-    {
-        _id: "4",
+    { 
+        _id : 4,
         name: "Porsche 911",
         brand: "Porsche",
         description: "Legendary sports car with timeless design and exhilarating performance.",
@@ -74,14 +69,10 @@ const popularCars: Car[] = [
         tags: ["Classic", "Performance"],
         image: "/c5.png?height=200&width=400",
         liked: false,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "porsche-911",
     },
-]
-
-const recommendedCars: Car[] = [
-    {
-        _id: "5",
+    { 
+        _id : "5",
         name: "All New Rush",
         brand: "Toyota",
         description: "Versatile compact SUV perfect for urban adventures.",
@@ -94,11 +85,10 @@ const recommendedCars: Car[] = [
         tags: ["Family", "Efficient"],
         image: "/c6.png?height=200&width=400",
         liked: false,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "all-new-rush",
     },
-    {
-        _id: "6",
+    { 
+        _id : "6",
         name: "CR - V",
         brand: "Honda",
         description: "Reliable and spacious SUV with advanced safety features.",
@@ -111,11 +101,10 @@ const recommendedCars: Car[] = [
         tags: ["Reliable", "Spacious"],
         image: "/c7.png?height=200&width=400",
         liked: true,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "cr-v",
     },
-    {
-        _id: "7",
+    { 
+        _id : "7",
         name: "All New Terios",
         brand: "Daihatsu",
         description: "Compact SUV with great maneuverability and fuel efficiency.",
@@ -128,11 +117,10 @@ const recommendedCars: Car[] = [
         tags: ["Compact", "Efficient"],
         image: "/c1.png?height=200&width=400",
         liked: false,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "all-new-terios",
     },
-    {
-        _id: "8",
+    { 
+        _id : "8",
         name: "MG ZS",
         brand: "MG",
         description: "Modern SUV with stylish design and advanced technology.",
@@ -145,62 +133,55 @@ const recommendedCars: Car[] = [
         tags: ["Modern", "Tech"],
         image: "/c2.png?height=200&width=400",
         liked: true,
-        slug: { current: "mg-zs" },
-        rating: 0
+        slug: "mg-zs",
     },
-]
+    {
+        _id : "9",
+        name: "Koenigsegg",
+        brand: "Koenigsegg",
+        description: "High-performance sports car with cutting-edge technology.",
+        type: "Sport",
+        fuelCapacity: "90L",
+        transmission: "Manual",
+        seatingCapacity: "2",
+        pricePerDay: "99.00",
+        originalPrice: "120.00",
+        tags: ["Luxury", "High Performance"],
+        image: "/c6.png?height=200&width=400",
+        liked: true,
+        slug: "koenigsegg",
+    },
+    // Add more cars here...
+];
 
-export default function Home() {
+const Category = () => {
     return (
-        <div className="flex min-h-screen flex-col bg-background">
+        <div className="min-h-screen bg-morent-background">
             <Header />
-            <main className="flex-1">
-                <Hero />
-                <SearchForm />
-                <div className="container mx-auto px-4 py-8">
-                    <section className="mb-8">
-                        <div className="mb-6 flex items-center justify-between">
-                            <h2 className="text-xl font-semibold">Sanity Car</h2>
-                            <a href="/category/components" className="text-sm text-primary hover:underline">
-                                View All
-                            </a>
+            <main className="container py-8 px-4 md:px-8">
+                <div className="flex flex-col md:flex-row gap-4 mb-8">
+                    <LocationPicker />
+                     </div>
+                <div className="flex flex-col lg:flex-row gap-8">
+                    <Sidebar />
+                    <div className="flex-1">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {cars.map((car, index) => (
+                                <CarCard key={index} car={car} />
+                            ))}
                         </div>
                         <CarDisplay />
-                        <div className="mb-6 flex items-center justify-between">
-                            <h2 className="text-xl font-semibold">Popular Car</h2>
-                            <a href="/category/components" className="text-sm text-primary hover:underline">
-                                View All
-                            </a>
+                        <div className="flex justify-center mt-8">
+                            <button className="bg-morent-blue text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                                Show more cars
+                            </button>
                         </div>
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {popularCars.map((car) => (
-                                <CarCard key={car.name} car={car} />
-                            ))}
-                        </div>
-                    </section>
-                    <section>
-                        <div className="mb-6 flex items-center justify-between">
-                            <h2 className="text-xl font-semibold">Recommendation Car</h2>
-                            <a href="/category/components" className="text-sm text-primary hover:underline">
-                                View All
-                            </a>
-                        </div>
-
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {recommendedCars.map((car) => (
-                                <CarCard key={car.name} car={car} />
-                            ))}
-                        </div>
-                        <div className="mt-8 flex justify-center">
-                            <Link href="/category/components">
-                                <Button size="lg">Show more cars</Button>
-                            </Link>
-                        </div>
-                    </section>
+                    </div>
                 </div>
             </main>
             <Footer />
         </div>
-    )
-}
+    );
+};
 
+export default Category;
